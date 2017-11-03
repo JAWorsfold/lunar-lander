@@ -10,7 +10,8 @@
 new_game = True
 
 # def start_game(): how do I make it so the first game is fresh...
-# def new_game(): how do I make it start and restart?        
+# def new_game(): how do I make it start and restart?
+
 
 def scoreboard():
     print('------------------------------------------------')
@@ -18,7 +19,8 @@ def scoreboard():
     print('Altitude: ' + str(round(altitude, 1)) + ' metres')
     print('Velocity: ' + str(round(velocity, 1)) + ' metres/second')
     print('Fuel: ' + str(round(fuel, 1)) + ' litres')
-                     
+
+
 while new_game:
     ready_player = input('Are you ready to play (again)? (Y/N): ')
 
@@ -59,17 +61,15 @@ while new_game:
             print('------------------------------------------------')
             print('You\'ve landed hard! You\'re final score is:')
             altitude = 0.0
-            print('FINAL SCORE:')
             scoreboard()
         else:
             print('------------------------------------------------')
             print('You\'ve landed safely! You\'re final score is:')
             altitude = 0.0
-            print('FINAL SCORE:')
             scoreboard()
-    
+
         print('------------------------------------------------')
-        print('            GAME OVER')
+        print('                       GAME OVER')
         print('------------------------------------------------')
 
     elif ready_player == 'N' or ready_player == 'n':
@@ -77,4 +77,3 @@ while new_game:
         new_game = False
     else:
         print('Try again...')
-
