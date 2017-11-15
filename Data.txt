@@ -1,8 +1,7 @@
 ## Lunar Lander 1.0 - with initial values as altitude 500 and fuel 500. ##
 
-List of numbers to enter in order to win the game by landing safety (easiest and exact):
-
-0 (21 times), 100, 140. Landed hard.
+List of numbers to enter in order to win the game by landing safety:
+[0 (21 times), 100, 140]
 
 List of numbers to enter in order to crash (simplest method):
-500... Crashed.
+[500]
