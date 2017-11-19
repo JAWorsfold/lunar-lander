@@ -1,18 +1,20 @@
-'''Joseph Worsfold - jworsf01.
-   This is the Lunar Lander (1.0) game which has been developed to be played
-   multiple times within specific parameters. These parameters include the
-   following: altitude, velocity, fuel, gravity, constant, burn. Each turn
-   the player is asked how much fuel to burn, which will affect the downward
-   velocity created by gravity, and this will affect the altitude on the next
-   turn. Winners must get to zero or less altitude at a velociy under 10 metres
-   per second. Extra points if it's under 5 metres per second.'''
-
-import string
+# Joseph Worsfold - jworsf01.
+# This is the Lunar Lander game. Developed for a single player
+# to play multiple times within specific parameters. These parameters include:
+# altitude, velocity, fuel, gravity, constant, and burn.
+# See instructions for more details.
 
 
 def instructions():
     """Tells the user the rules of the game."""
-    print('The instructions')
+    print('-' * 50 + '\n' + ' ' * 8 + 'WELCOME TO THE LUNAR LANDER GAME\n' +
+          '-' * 50 + '\n'
+          'You must land on the Moon without crashing.\n'
+          'Every turn you\'ll be told your altitude, velocity,\n'
+          'and remaining fuel. You must then decide how much\n'
+          'fuel to burn. Win by landing (with an altitude\n'
+          'of zero or less) at a velocity under 10 metres per\n'
+          'second. Try landing under 5 metres per second!')
 
 
 def play_again(prompt):
@@ -40,14 +42,13 @@ def initial_variables():
 def scoreboard(turn, altitude, velocity, fuel):
     """Prints the scoreboard whenever it is called."""
     sep = '-' * 50
-    print('%s\nTurn: %d\nAltitude: %.1f metres' % (sep, turn, altitude))
-    print('Velocity: %.1f m/s\nFuel: %.1f litres\n%s' % (velocity, fuel, sep))
+    print('%s\nTurn: %d\nAltitude: %.1f metres\nVelocity: %.1f metres/second\n'
+          'Fuel: %.1f litres\n%s' % (sep, turn, altitude, velocity, fuel, sep))
 
 
 def fuel_check(fuel):
     """Checks if there is fuel to burn and then asks the player how much."""
     if fuel > 0:
-        # print('Enter an integer or float, or burn will equal 0.')
         return float(input('How much fuel do you want to burn?: '))
     else:
         print('You\'re out of fuel')
@@ -55,7 +56,7 @@ def fuel_check(fuel):
 
 
 def burn_calc(fuel):
-    """Calculates the amount of fuel to burn based on input."""
+    """Calculates the amount of fuel to burn based on player input."""
     burn = fuel_check(fuel)
     if burn < 0:  # if the player inputs a negative number
         return 0
@@ -69,7 +70,7 @@ def turn_calc(list):
     """Takes the list of initial variables and calculates the new list."""
     vars = list
     burn = burn_calc(vars[3])
-    vars[3] -= burn  # fuel
+    vars[3] -= burn  # fuel after subtracting burn
     vars[2] += vars[4]  # velocity after adding gravity
     vars[2] -= vars[5] * burn  # veolcity after adding burn * constant
     vars[1] -= vars[2]  # altitude after subtracting velocity
@@ -88,7 +89,8 @@ def game_result(turn, altitude, velocity, fuel):
         print('You\'ve landed hard! You\'re final score is: ')
         scoreboard(turn, altitude, velocity, fuel)
     else:
-        print('You\'ve crashed. Creating a %d mile crater.\n' + '-' * 50)
+        print('You\'ve crashed. Creating a %d mile crater.\n%s'
+              % (velocity * 0.13, '-' * 50))
 
 
 def main():
